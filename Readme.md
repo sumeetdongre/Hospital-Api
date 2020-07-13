@@ -29,7 +29,7 @@ Hospital api is a rest api built using Nodejs and Mongo Db.It register the docto
 1. /doctors/register - pass parameter as username:name , password: password
 2. /doctors/login- pass username and password.
 3. /patients/register- register patient by passing parameter phone: phone_number.
-4. /patients/:id/create_report- pass doctor Jwt token as access-token: JWT Token
+4. /patients/:id/create_report- pass doctor Jwt token as access-token: JWT Token and status: required status
 5. /patients/:id/all_reports- get all reports of  specific patient
 6. /reports/:status- get all reports of patient by specific status
 
