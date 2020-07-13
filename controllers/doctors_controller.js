@@ -1,7 +1,5 @@
 const Doctor=require('../models/doctor');
-
 const jwt=require('jsonwebtoken');
-
 
 module.exports.register=function(req,res){
     
@@ -31,6 +29,7 @@ module.exports.login= async function(req,res){
     try{
 
         let doctor = await Doctor.findOne({username: req.body.username});
+
         if(!doctor || doctor.password != req.body.password){
             return res.json(422,{
                 message:"Invalid username or password"
@@ -41,7 +40,7 @@ module.exports.login= async function(req,res){
         return res.json(200,{
             message:"Sign in successful, here's your token please keep it safe.",
             data:{
-                token:jwt.sign(doctor.toJSON(),'covid19',{expiresIn: '10000000'})
+                token:jwt.sign(doctor.toJSON(),'ensureauthenticate',{expiresIn: '10000000'})
             },
 
         })

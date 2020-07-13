@@ -1,14 +1,14 @@
-const passpory=require('passport');
+const passport=require('passport');
 
 const LocalStrategy=require('passport-local').Strategy;
 const userSchema=require('../models/doctor');
-const passport = require('passport');
 
 passport.use(new LocalStrategy({
     usernameField: 'username',
     passReqToCallback: true,
 },
     function(req,username,password,done){
+
         userSchema.findOne({username: username},function(err,doctor){
             if(err){
                 return done(err);
@@ -51,9 +51,6 @@ passport.checkAuthentication = function(req,res,next){
     if(req.isAuthenticated()){
         return next();
     }
-
-    //if the user is not signed in
-    return res.redirect('/users/sign-in');
 }
 
 

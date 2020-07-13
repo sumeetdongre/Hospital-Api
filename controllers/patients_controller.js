@@ -4,18 +4,22 @@ const Report=require('../models/report');
 
 var jwt=require('jsonwebtoken');
 
+
+// create patient profile
 module.exports.register=function(req,res){
     try{
 
         Patient.findOne({ phone:req.body.phone }, function(err, patient){
+           
             if(!patient){
                 Patient.create(req.body, function(err,user){
                     if(err){
                         return res.json(422,{
                             err: err,
-                            message: "Error in registering doctor"
+                            message: "Error in registering patient"
                         });
                     }
+
 
                     return res.json(200,{
                         message: "Registration Successfull"
@@ -37,7 +41,7 @@ module.exports.register=function(req,res){
     }
 }
 
-
+//create patient report
 module.exports.createReport=function(req,res){
     try{
 
@@ -50,7 +54,7 @@ module.exports.createReport=function(req,res){
             })
         }
 
-        jwt.verify(token,'covid19',function(err,patientid){
+        jwt.verify(token,'ensureauthenticate',function(err,patientid){
            
             if(err){
                 return res.json(500,{
@@ -74,7 +78,7 @@ module.exports.createReport=function(req,res){
 
                 Report.create({
                     patient: req.params.id,
-                    doctor:doctor.username,
+                    doctor: doctor.username,
                     status: req.body.status,
                     date: new Date(),
                 },function(err,user){
@@ -104,7 +108,7 @@ module.exports.createReport=function(req,res){
     }
 }
 
-
+//create all report of patient by patient id
 module.exports.allreports=function(req,res){
     try{
 

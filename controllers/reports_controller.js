@@ -1,5 +1,6 @@
 const Report=require('../models/report');
 
+//find all report of patient by report status
 module.exports.reports=function(req,res){
     try{
         Report.find({status: req.params.status},function(err,reports){
