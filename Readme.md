@@ -16,7 +16,7 @@ Hospital api is a rest api built using Nodejs and Mongo Db.It register the docto
 - Date
 
 
-Steps to Set project
+# Steps to Set project
 
 1. clone the repository or download the project
 2. Open in VS code
@@ -24,7 +24,7 @@ Steps to Set project
 4. To start the project use command "npm start"
 5. Use postman to use an api
 
-Steps to use Api
+# Steps to use Api
 
 1. /doctors/register - pass parameter as username:name , password: password
 2. /doctors/login- pass username and password.
